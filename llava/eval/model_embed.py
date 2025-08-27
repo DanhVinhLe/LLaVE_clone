@@ -363,7 +363,8 @@ def main():
         with open(encode_tgt_path, 'wb') as f:
             pickle.dump((encoded_tensor, eval_tgt_dataset.paired_data), f)
 
-    for subset in tqdm(args.subset_name, desc="calculate score"):
+    # for subset in tqdm(args.subset_name, desc="calculate score"):
+        print(f"Calculating score for {subset}")
         encode_qry_path = os.path.join(args.encode_output_path, f"{subset}_qry")
         encode_tgt_path = os.path.join(args.encode_output_path, f"{subset}_tgt")
         with open(encode_qry_path, 'rb') as f:
