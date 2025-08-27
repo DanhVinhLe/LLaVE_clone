@@ -333,7 +333,7 @@ def main():
         with torch.no_grad():
             for batch in tqdm(eval_qry_loader, desc="Encode query"):
                 # batch = {key: value.to(args.device) for key, value in batch.items()}
-                with torch.autocast(enabled=True, dtype=torch.bfloat16, device_type="cuda"):
+                with torch.autocast(enabled=True, dtype=torch.float16, device_type="cuda"):
                     for key in batch:
                         if isinstance(batch[key], torch.Tensor):
                             batch[key] = batch[key].to(model.device)
@@ -350,7 +350,7 @@ def main():
         with torch.no_grad():
             for batch in tqdm(eval_tgt_loader, desc="Encode target"):
                 # batch = {key: value.to(args.device) for key, value in batch.items()}
-                with torch.autocast(enabled=True, dtype=torch.bfloat16, device_type="cuda"):
+                with torch.autocast(enabled=True, dtype=torch.float16, device_type="cuda"):
                     for key in batch:
                         if isinstance(batch[key], torch.Tensor):
                             batch[key] = batch[key].to(model.device)
